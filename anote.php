@@ -5,13 +5,13 @@ require_once('fpdf.php');
 
 //require_once('FPDI/src/autoload.php');
 require_once('fpdi/fpdi.php');
-$mm = 0.235185333;
-echo $x1 = $_POST['X1']*$mm; echo ',';
-echo $y1 = $_POST['Y1']*$mm; echo ',';
- $x2 = $_POST['X2']*$mm; 
+$scale  = 0.235185333;
+echo $x1 = $_POST['X1']*$scale; echo ',';
+echo $y1 = $_POST['Y1']*$scale; echo ',';
+ $x2 = $_POST['X2']*$scale; 
 echo $x2 = $x2 - $x1; echo ',';
 
- $y2 = $_POST['Y2']*$mm;
+ $y2 = $_POST['Y2']*$scale;
  echo $y2 = $y2 -$y1; echo ',';
 
 echo $pageNo = $_POST['pageNo'];
@@ -123,22 +123,6 @@ for($i = 1; $i <= $pages_count; $i++)
    
 }
 }
-
-//
-
-// import page 1
-//$tplId = $pdf->importPage(1);
-
-// use the imported page and place it at point 10,10 with a width of 100 mm
-//$pdf->useTemplate($tplId, -10, 20, 210);
-
-//$pdf->SetFont('Arial','',20);
-//$pdf->SetTextColor(255,0,0);
-//$pdf->SetXY(90, 160);
-
-//$pdf->Write(0,"This is Shiv !");
-
-
 $pdf->Output($output,'F');
 
 //echo 'Success !';
